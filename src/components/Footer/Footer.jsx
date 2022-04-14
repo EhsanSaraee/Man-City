@@ -1,8 +1,14 @@
+import { Logo } from '../Logo/Logo';
+import { BckBlue, FooterDescL, FooterLogo } from './styles';
+
 const Footer = () => {
    return (
-      <footer>
-         <h1>footer</h1>
-      </footer>
+      <BckBlue>
+         <FooterLogo>
+            <Logo width="70px" height="70px" link linkTo="/" />
+         </FooterLogo>
+         <FooterDescL>Manchester City 2021. All rights reserved.</FooterDescL>
+      </BckBlue>
    );
 };
 

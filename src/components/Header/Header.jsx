@@ -1,5 +1,6 @@
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { Logo } from '../Logo/Logo';
 import { HeaderAppBar, HeaderLogo, HeaderToolbar } from './styles';
 
 const Header = () => {
@@ -7,7 +8,9 @@ const Header = () => {
       <HeaderAppBar position="fixed">
          <HeaderToolbar>
             <div>
-               <HeaderLogo>Logo</HeaderLogo>
+               <HeaderLogo>
+                  <Logo width="70px" height="70px" link linkTo="/" />
+               </HeaderLogo>
             </div>
             <Link to="/team">
                <Button color="inherit">Team</Button>
