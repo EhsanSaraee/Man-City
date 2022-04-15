@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Footer, Header } from './components';
 import { Home, SignIn } from './pages';
 
-const App = () => {
+const UserApp = () => {
    return (
       <BrowserRouter>
          <Header />
@@ -15,4 +15,4 @@ const App = () => {
    );
 };
 
-export default App;
+export default UserApp;
