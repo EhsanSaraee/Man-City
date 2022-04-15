@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { firebase } from './firebase';
+import { app } from './firebase';
 import UserApp from './UserApp';
 import './index.css';
 
@@ -11,6 +11,6 @@ const App = (props) => {
    return <UserApp {...props} />;
 };
 
-firebase.auth().onAuthStateChanged((user) => {
+app.auth().onAuthStateChanged((user) => {
    root.render(<App user={user} />);
 });

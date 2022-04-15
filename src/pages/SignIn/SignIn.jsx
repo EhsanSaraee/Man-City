@@ -2,8 +2,9 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as yup from 'yup';
 import { Container, ErrorLabel, Progress, SignInWrapper } from './styles';
-import { firebase } from '../../firebase';
+import { app } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
+import { errorToast, successToast } from '../../utils/tools';
 
 const SignIn = () => {
    const [loading, setLoading] = useState(false);
@@ -29,17 +30,15 @@ const SignIn = () => {
       });
 
    const submitForm = (values) => {
-      firebase
-         .auth()
+      app.auth()
          .signInWithEmailAndPassword(values.email, values.password)
          .then(() => {
-            // show success toast
+            successToast('Welcome back!');
             navigate('/dashboard');
          })
          .catch((error) => {
             setLoading(false);
-            alert(error);
-            /// show toasts
+            errorToast(error.message);
          });
    };
 
