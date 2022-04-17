@@ -13,10 +13,10 @@ const Header = ({ user }) => {
                   <Logo width="70px" height="70px" link linkTo="/" />
                </HeaderLogo>
             </div>
-            <Link to="/team">
+            <Link to="/the_team">
                <Button color="inherit">Team</Button>
             </Link>
-            <Link to="/matches">
+            <Link to="/the_matches">
                <Button color="inherit">Matches</Button>
             </Link>
             {user && (
