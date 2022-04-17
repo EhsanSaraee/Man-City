@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 const firebaseConfig = {
    apiKey: 'AIzaSyAdNEBWW5zJBHckmyafWUz0k3A_yqJF_gQ',
@@ -10,4 +11,20 @@ const firebaseConfig = {
    appId: '1:513257660345:web:ac49fc262f02f036a92068',
 };
 
-export const app = firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
+
+const DB = firebase.firestore();
+const matchesCollection = DB.collection('matches');
+const playersCollection = DB.collection('players');
+const positionsCollection = DB.collection('positions');
+const promotionsCollection = DB.collection('promotions');
+const teamsCollection = DB.collection('teams');
+
+export {
+   app,
+   matchesCollection,
+   playersCollection,
+   positionsCollection,
+   promotionsCollection,
+   teamsCollection,
+};
