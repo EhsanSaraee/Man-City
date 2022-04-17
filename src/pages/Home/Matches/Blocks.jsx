@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { matchesCollection } from '../../../firebase';
+import Block from './Block/Block';
+import { HomeMatches, MatchItem, Wrapper } from './styles';
 
 const Blocks = () => {
    const [matches, setMatches] = useState([]);
@@ -13,7 +15,7 @@ const Blocks = () => {
                   id: doc.id,
                   ...doc.data(),
                }));
-               console.log(matches);
+               setMatches(matches);
             })
             .catch((error) => {
                console.log(error);
@@ -21,11 +23,19 @@ const Blocks = () => {
       }
    }, [matches]);
 
-   return (
-      <>
-         <h1>Blocks</h1>
-      </>
-   );
+   const showMatches = (matches) =>
+      matches &&
+      matches.map((match) => (
+         <MatchItem bottom key={match.id} triggerOnce>
+            <div>
+               <Wrapper>
+                  <Block {...match} />
+               </Wrapper>
+            </div>
+         </MatchItem>
+      ));
+
+   return <HomeMatches>{showMatches(matches)}</HomeMatches>;
 };
 
 export default Blocks;

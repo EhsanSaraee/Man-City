@@ -1,10 +1,10 @@
 import Blocks from './Blocks';
-import { Container, MatchesWrapper } from './styles';
+import { Container, HomeMatchesWrapper } from './styles';
 import { Tag } from '../../../components';
 
 const Matches = () => {
    return (
-      <MatchesWrapper>
+      <HomeMatchesWrapper>
          <Container>
             <Tag bck="#0e1731" size="50px" color="#ffffff">
                Matches
@@ -16,7 +16,7 @@ const Matches = () => {
                Matches
             </Tag>
          </Container>
-      </MatchesWrapper>
+      </HomeMatchesWrapper>
    );
 };
 
