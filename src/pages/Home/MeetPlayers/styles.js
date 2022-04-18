@@ -25,4 +25,5 @@ export const HomeCardWrapper = styled.div`
 export const HomeTextWrapper = styled.section`
    float: right;
    width: 390px;
+   margin-top: 70px;
 `;

@@ -4,6 +4,7 @@ import { easePolyOut } from 'd3-ease';
 import Otamendi from '../../../resources/images/players/Otamendi.png';
 import Sterling from '../../../resources/images/players/Raheem_Sterling.png';
 import Kompany from '../../../resources/images/players/Vincent_Kompany.png';
+import PlayerCard from './Card/PlayerCard';
 
 let cards = [
    {
@@ -28,8 +29,40 @@ let cards = [
    },
 ];
 
-const HomeCards = (props) => {
-   const showAnimateCards = () => cards.map((card, i) => <Animate></Animate>);
+const HomeCards = ({ show }) => {
+   const showAnimateCards = () =>
+      cards.map((card, i) => (
+         <Animate
+            key={i}
+            show={show}
+            start={{
+               left: 0,
+               bottom: 0,
+            }}
+            enter={{
+               left: [card.left],
+               bottom: [card.bottom],
+               timing: { delay: 500, duration: 500, ease: easePolyOut },
+            }}
+         >
+            {({ left, bottom }) => (
+               <div
+                  style={{
+                     position: 'absolute',
+                     left,
+                     bottom,
+                  }}
+               >
+                  <PlayerCard
+                     number="30"
+                     name="Nicolas"
+                     lastname="Otamendi"
+                     bck={card.player}
+                  />
+               </div>
+            )}
+         </Animate>
+      ));
 
    return <div>{showAnimateCards()}</div>;
 };
