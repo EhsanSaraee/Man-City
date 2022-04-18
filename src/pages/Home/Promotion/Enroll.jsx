@@ -16,19 +16,48 @@ import {
 const Enroll = () => {
    const [loading, setLoading] = useState(false);
 
-   const { handleSubmit, handleBlur, handleChange, values, touched, errors } =
-      useFormik({
-         initialValues: { email: '' },
-         validationSchema: yup.object({
-            email: yup
-               .string()
-               .email('Invalid email')
-               .required('The email is required'),
-         }),
-         onSubmit: (values) => {
-            setLoading(true);
-         },
-      });
+   const {
+      handleSubmit,
+      handleBlur,
+      handleChange,
+      values: { email },
+      touched,
+      errors,
+      resetForm,
+   } = useFormik({
+      initialValues: { email: '' },
+      validationSchema: yup.object({
+         email: yup
+            .string()
+            .email('Invalid email')
+            .required('The email is required'),
+      }),
+      onSubmit: (values) => {
+         setLoading(true);
+         submitForm(values);
+      },
+   });
+
+   const submitForm = async (values) => {
+      try {
+         const isOnTheList = await promotionsCollection
+            .where('email', '==', values.email)
+            .get();
+
+         if (isOnTheList.docs.length) {
+            errorToast('sorry you are on the list already');
+            setLoading(false);
+            return false;
+         }
+
+         await promotionsCollection.add({ email: values.email });
+         resetForm();
+         setLoading(false);
+         successToast('Congratulation!, Now you are on the list');
+      } catch (error) {
+         errorToast(error);
+      }
+   };
 
    return (
       <Fade>
@@ -40,7 +69,7 @@ const Enroll = () => {
                      type="email"
                      name="email"
                      onChange={handleChange}
-                     value={values.email}
+                     value={email}
                      onBlur={handleBlur}
                      placeholder="Enter your email"
                   />

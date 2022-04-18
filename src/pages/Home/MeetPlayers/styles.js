@@ -11,8 +11,7 @@ export const Container = styled.section`
 `;
 
 export const HomeMeetPlayersWrapper = styled.section`
-   padding-bottom: 100px;
-   min-height: 600px;
+   min-height: 675px;
 `;
 
 export const HomeCardWrapper = styled.div`
