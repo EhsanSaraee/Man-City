@@ -13,7 +13,7 @@ export const MatchTop = styled.section`
    display: flex;
 `;
 
-export const MatchLeft = styled.div`
+export const Left = styled.div`
    background: #ffffff;
    font-family: 'Righteous', cursive;
    flex-grow: 1;
@@ -36,7 +36,7 @@ export const TeamName = styled.div`
    padding: 6px 10px;
 `;
 
-export const MatchRight = styled.div`
+export const Right = styled.div`
    background: #0e1731;
    width: 70px;
    color: #ffffff;

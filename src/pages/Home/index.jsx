@@ -1,6 +1,7 @@
 import Featured from './Featured';
 import Matches from './Matches';
 import MeetPlayers from './MeetPlayers';
+import Promotion from './Promotion';
 import { BckBlue } from './styles';
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
          <Featured />
          <Matches />
          <MeetPlayers />
+         <Promotion />
       </BckBlue>
    );
 };

@@ -3,8 +3,8 @@ import {
    MatchBottom,
    MatchDate,
    MatchIcon,
-   MatchLeft,
-   MatchRight,
+   Left,
+   Right,
    MatchTop,
    MatchWrapper,
    TeamName,
@@ -25,26 +25,26 @@ const Block = ({
          <MatchDate>{date}</MatchDate>
          <MatchWrapper>
             <MatchTop>
-               <MatchLeft>
+               <Left>
                   <MatchIcon
                      style={{
                         background: `url(/images/team_icons/${localThmb}.png)`,
                      }}
                   />
                   <TeamName>{local}</TeamName>
-               </MatchLeft>
-               <MatchRight>{final ? resultLocal : '-'}</MatchRight>
+               </Left>
+               <Right>{final ? resultLocal : '-'}</Right>
             </MatchTop>
             <MatchBottom>
-               <MatchLeft>
+               <Left>
                   <MatchIcon
                      style={{
                         background: `url(/images/team_icons/${awayThmb}.png)`,
                      }}
                   />
                   <TeamName>{away}</TeamName>
-               </MatchLeft>
-               <MatchRight>{final ? resultAway : '-'}</MatchRight>
+               </Left>
+               <Right>{final ? resultAway : '-'}</Right>
             </MatchBottom>
          </MatchWrapper>
       </MatchBlock>
