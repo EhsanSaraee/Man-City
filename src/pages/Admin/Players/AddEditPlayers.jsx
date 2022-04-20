@@ -3,6 +3,19 @@ import { useEffect, useState } from 'react';
 import AdminLayout from '../../../HOC/AdminLayout';
 import * as yup from 'yup';
 import { useParams } from 'react-router-dom';
+import {
+   Button,
+   FormControl,
+   MenuItem,
+   Select,
+   TextField,
+} from '@material-ui/core';
+import {
+   isSelectError,
+   selectErrorHelper,
+   textErrorHelper,
+} from '../../../utils/tools';
+import { EditPlayersDialogWrapper } from './styles';
 
 const defaultValues = {
    name: '',
@@ -14,6 +27,7 @@ const defaultValues = {
 const AddEditPlayers = () => {
    const { playerID } = useParams();
 
+   const [loading, setLoading] = useState(false);
    const [formType, setFormType] = useState('');
    const [values, setValues] = useState(defaultValues);
 
@@ -43,8 +57,80 @@ const AddEditPlayers = () => {
    }, [playerID]);
 
    return (
-      <AdminLayout title="Add Players">
-         <h1>Add Players</h1>
+      <AdminLayout title={formType === 'add' ? 'Add Player' : 'Edit Player'}>
+         <EditPlayersDialogWrapper>
+            <div>
+               <form onSubmit={formik.handleSubmit}>
+                  image
+                  <hr />
+                  <h4>Player Info</h4>
+                  <div style={{ marginBottom: '5px' }}>
+                     <FormControl>
+                        <TextField
+                           id="name"
+                           name="name"
+                           variant="outlined"
+                           placeholder="First Name"
+                           {...formik.getFieldProps('name')}
+                           {...textErrorHelper(formik, 'name')}
+                        />
+                     </FormControl>
+                  </div>
+                  <div style={{ marginBottom: '5px' }}>
+                     <FormControl>
+                        <TextField
+                           id="lastname"
+                           name="lastname"
+                           variant="outlined"
+                           placeholder="Add lastname"
+                           {...formik.getFieldProps('lastname')}
+                           {...textErrorHelper(formik, 'lastname')}
+                        />
+                     </FormControl>
+                  </div>
+                  <div style={{ marginBottom: '5px' }}>
+                     <FormControl>
+                        <TextField
+                           id="number"
+                           name="number"
+                           variant="outlined"
+                           placeholder="Add number"
+                           {...formik.getFieldProps('number')}
+                           {...textErrorHelper(formik, 'number')}
+                        />
+                     </FormControl>
+                  </div>
+                  <div style={{ marginBottom: '5px' }}>
+                     <FormControl error={isSelectError(formik, 'position')}>
+                        <Select
+                           id="position"
+                           name="position"
+                           variant="outlined"
+                           displayEmpty
+                           {...formik.getFieldProps('position')}
+                        >
+                           <MenuItem value="" disabled>
+                              Select a position
+                           </MenuItem>
+                           <MenuItem value="Keeper">Keeper</MenuItem>
+                           <MenuItem value="Defence">Defence</MenuItem>
+                           <MenuItem value="Midfield">Midfield</MenuItem>
+                           <MenuItem value="Striker">Striker</MenuItem>
+                        </Select>
+                        {selectErrorHelper(formik, 'position')}
+                     </FormControl>
+                  </div>
+                  <Button
+                     type="submit"
+                     variant="contained"
+                     color="primary"
+                     disabled={loading}
+                  >
+                     {formType === 'add' ? 'Add player' : 'Edit player'}
+                  </Button>
+               </form>
+            </div>
+         </EditPlayersDialogWrapper>
       </AdminLayout>
    );
 };
