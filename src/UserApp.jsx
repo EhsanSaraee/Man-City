@@ -6,6 +6,7 @@ import AuthGuard from './Guards/AuthGuard';
 import { Dashboard, Home, SignIn } from './pages';
 import AddEditPlayers from './pages/Admin/Players/AddEditPlayers';
 import AdminPlayers from './pages/Admin/Players/AdminPlayers';
+import TheTeam from './pages/TheTeam';
 
 const UserApp = ({ user }) => {
    return (
@@ -23,6 +24,7 @@ const UserApp = ({ user }) => {
                   </AuthGuard>
                }
             />
+            <Route path="/the_team" element={<TheTeam />} />
             <Route
                path="/admin_players"
                element={

@@ -103,10 +103,10 @@ const AddEditPlayers = () => {
          <EditPlayersDialogWrapper>
             <div>
                <form onSubmit={formik.handleSubmit}>
-                  image
-                  <hr />
-                  <h4>Player Info</h4>
-                  <div style={{ marginBottom: '5px' }}>
+                  <h4 style={{ marginTop: '15px', marginBottom: '5px' }}>
+                     Player Info
+                  </h4>
+                  <div style={{ marginBottom: '15px' }}>
                      <FormControl>
                         <TextField
                            id="name"
@@ -118,7 +118,7 @@ const AddEditPlayers = () => {
                         />
                      </FormControl>
                   </div>
-                  <div style={{ marginBottom: '5px' }}>
+                  <div style={{ marginBottom: '15px' }}>
                      <FormControl>
                         <TextField
                            id="lastname"
@@ -130,7 +130,7 @@ const AddEditPlayers = () => {
                         />
                      </FormControl>
                   </div>
-                  <div style={{ marginBottom: '5px' }}>
+                  <div style={{ marginBottom: '15px' }}>
                      <FormControl>
                         <TextField
                            id="number"
@@ -142,7 +142,7 @@ const AddEditPlayers = () => {
                         />
                      </FormControl>
                   </div>
-                  <div style={{ marginBottom: '5px' }}>
+                  <div style={{ marginBottom: '15px' }}>
                      <FormControl error={isSelectError(formik, 'position')}>
                         <Select
                            id="position"
