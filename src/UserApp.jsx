@@ -4,6 +4,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Footer, Header } from './components';
 import AuthGuard from './Guards/AuthGuard';
 import { Dashboard, Home, SignIn } from './pages';
+import AdminMatches from './pages/Admin/Matches';
+import AddEditMatch from './pages/Admin/Matches/AddEditMatch';
 import AddEditPlayers from './pages/Admin/Players/AddEditPlayers';
 import AdminPlayers from './pages/Admin/Players/AdminPlayers';
 import TheTeam from './pages/TheTeam';
@@ -25,6 +27,7 @@ const UserApp = ({ user }) => {
                }
             />
             <Route path="/the_team" element={<TheTeam />} />
+            {/* Players */}
             <Route
                path="/admin_players"
                element={
@@ -46,6 +49,31 @@ const UserApp = ({ user }) => {
                element={
                   <AuthGuard>
                      <AddEditPlayers />
+                  </AuthGuard>
+               }
+            />
+            {/* Matches */}
+            <Route
+               path="/admin_matches/edit_match/:matchID"
+               element={
+                  <AuthGuard>
+                     <AddEditMatch />
+                  </AuthGuard>
+               }
+            />
+            <Route
+               path="/admin_matches/add_match"
+               element={
+                  <AuthGuard>
+                     <AddEditMatch />
+                  </AuthGuard>
+               }
+            />
+            <Route
+               path="/admin_matches"
+               element={
+                  <AuthGuard>
+                     <AdminMatches />
                   </AuthGuard>
                }
             />
