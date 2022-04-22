@@ -14,3 +14,5 @@ export const AdminProgress = styled.div`
    text-align: center;
    margin: 20px 0px;
 `;
+
+export const EditMatchDialogWrapper = styled.section``;
