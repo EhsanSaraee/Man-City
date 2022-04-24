@@ -8,6 +8,7 @@ import AdminMatches from './pages/Admin/Matches';
 import AddEditMatch from './pages/Admin/Matches/AddEditMatch';
 import AddEditPlayers from './pages/Admin/Players/AddEditPlayers';
 import AdminPlayers from './pages/Admin/Players/AdminPlayers';
+import TheMatches from './pages/TheMatches';
 import TheTeam from './pages/TheTeam';
 
 const UserApp = ({ user }) => {
@@ -27,6 +28,7 @@ const UserApp = ({ user }) => {
                }
             />
             <Route path="/the_team" element={<TheTeam />} />
+            <Route path="/the_matches" element={<TheMatches />} />
             {/* Players */}
             <Route
                path="/admin_players"
